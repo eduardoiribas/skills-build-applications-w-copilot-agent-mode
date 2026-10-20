@@ -30,13 +30,13 @@ OctoFit Tracker is a three-tier application for a school fitness program. The st
 
 These decisions keep each responsibility in its existing tier and use the API contracts as the source of expected behavior.
 
-- **Presentation tier**: Keep the existing React routes and capability components responsible for rendering. Fetch through the shared API client and expose accessible loading, empty, success, and error states.
-- **Logic tier**: Keep HTTP parsing and status codes in Express routes, with capability behavior in explicit service functions. Validate request fields and referenced records before persistence, returning deliberate 4xx responses for invalid input.
-- **Data tier**: Put field types, required values, references, and defaults in Mongoose schemas. Keep demo seeding idempotent with upserts; do not clear collections.
-- **Activity tracking**: Validate the submitted user and team IDs and confirm both records exist. Persist the submitted activity fields with points and occurrence time computed by the service; list created activity records through the same API contract.
-- **Team management**: Require a team name, preserve the submitted name and mascot, and support member references when creating and listing teams.
-- **Leaderboard**: Sum activity points per team, sort from highest to lowest, and assign 1-based ranks in the response.
-- **Workout suggestions**: Find the user by email, use the fitness goal and recent activity pattern to select and explain suggestions, and return a deliberate 4xx when no user matches.
+- Presentation tier decision: Keep the existing React routes and capability components responsible for rendering. Fetch through the shared API client and expose accessible loading, empty, success, and error states.
+- Logic tier decision: Keep HTTP parsing and status codes in Express routes, with capability behavior in explicit service functions. Validate request fields and referenced records before persistence, returning deliberate 4xx responses for invalid input.
+- Data tier decision: Put field types, required values, references, and defaults in Mongoose schemas. Keep demo seeding idempotent with upserts; do not clear collections.
+- Activity tracking approach: Validate the submitted user and team IDs and confirm both records exist. Persist the submitted activity fields with points and occurrence time computed by the service; list created activity records through the same API contract.
+- Team management approach: Require a team name, preserve the submitted name and mascot, and support member references when creating and listing teams.
+- Leaderboard approach: Sum activity points per team, sort from highest to lowest, and assign 1-based ranks in the response.
+- Workout suggestions approach: Find the user by email, use the fitness goal and recent activity pattern to select and explain suggestions, and return a deliberate 4xx when no user matches.
 
 ## Test plan
 
